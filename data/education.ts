@@ -73,4 +73,10 @@ export const educationData: educationType[] = [
         description: "教育数据1的描述",
         image: "/education/example1.jpg"
     },
+    {
+    id: 13,
+    name: "测试添加",
+    description: "测试添加",
+    image: "/education/example1.jpg"
+    },
 ]
