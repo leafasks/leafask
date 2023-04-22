@@ -17,10 +17,10 @@ export default function Home() {
     }
 
     const predict = (inFile: File) => {
-        // POST http://20.222.60.131:3011/predict Body: form-data, key: img, value: file
+        // POST https://chat.jetlab.live/ Body: form-data, key: img, value: file
         const formData = new FormData()
         formData.append('img', inFile as File)
-        fetch('http://20.222.60.131:3011/predict', {
+        fetch('https://chat.jetlab.live/predict', {
             method: 'POST',
             body: formData
         }).then(res => {
