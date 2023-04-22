@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Identify({onUpload}: {onUpload: (file: File | null) => void}) {
+export default function Identify({onUpload,disable}: {onUpload: (file: File | null) => void,disable:boolean}) {
     return (
         <div className={'w-full h-max flex flex-col'}>
             <div className={'w-full relative bg-green-700 overflow-hidden h-72 rounded-lg bg-scanner px-3 py-2 flex justify-between items-between text-white'}>
@@ -15,6 +15,7 @@ export default function Identify({onUpload}: {onUpload: (file: File | null) => v
                         上传一张植物照片,对病害进行识别
                     </p>
                     <button
+                        disabled={disable}
                         onClick={() => {
                             // 创建一个 input 元素
                             const input = document.createElement('input')
@@ -30,7 +31,7 @@ export default function Identify({onUpload}: {onUpload: (file: File | null) => v
                                 onUpload(target.files ? target.files[0] : null)
                             })
                         }}
-                        className="btn btn-accent w-36 h-10 bg-white rounded-lg text-black btn-sm">
+                        className={`btn btn-accent w-36 h-10 bg-white rounded-lg text-black btn-sm ${disable?'opacity-50 cursor-not-allowed':''}`}>
                         ▲ 上传图片
                     </button>
                 </div>

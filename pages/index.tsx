@@ -3,36 +3,101 @@ import Identify from "@/pages/Identify";
 import EducationList from "@/pages/EducationList";
 import Education from "@/pages/Education";
 import Dataset from "@/pages/Dataset";
-import {useState} from 'react'
+import {useCallback, useState} from 'react'
 
 export default function Home() {
     const [activeID, setActiveID] = useState<number>(0)
     const [file, setFile] = useState<File | null>(null)
     const [articleId, setArticleId] = useState<number>(0)
     const navItemsStyle = `hover:text-green-800 transition-all ease-in-out duration-800 cursor-pointer `
+    const [predictStatus, setPredictStatus] = useState<'success' | 'pending' | 'fail' | 'default'>('default')
+    const [result, setResult] = useState<string>('')
     const clickNavItems = (id: number): void => {
         setActiveID(id)
     }
+
+    const predict = (inFile: File) => {
+        // POST http://20.222.60.131:3011/predict Body: form-data, key: img, value: file
+        const formData = new FormData()
+        formData.append('img', inFile as File)
+        fetch('http://20.222.60.131:3011/predict', {
+            method: 'POST',
+            body: formData
+        }).then(res => {
+            return res.json()
+        }).then(res => {
+            console.log(res)
+            setResult(res.result)
+            setPredictStatus('success')
+        }).catch(err => {
+            console.log(err)
+            setPredictStatus('fail')
+        })
+    }
+
     const RouterSwitch = (): JSX.Element => {
         switch (activeID) {
             case 0:
                 return (
                     <div className={'w-full px-3'}>
                         <Identify
+                            disable={predictStatus === 'pending'}
                             onUpload={(file: File | null) => {
                                 console.log(file)
                                 setFile(file)
+                                setPredictStatus('pending')
+                                if (file) {
+                                    predict(file)
+                                }
                             }}
                         />
-                        <div className={'w-full flex items-end justify-end'}>
-                            {file?.name}
-                        </div>
-                        <div className={'w-full h-full flex flex-col items-center justify-center mt-12'}>
-                            <img src='/empty.svg' className={'h-48 mt-2'} alt={'empty'}/>
-                            <p>
-                                暂无数据，请先上传图片
-                            </p>
-                        </div>
+                        {
+                            (predictStatus === 'default' || predictStatus === 'success') && (
+                                <div className={'w-full h-full flex flex-col items-center justify-center mt-12'}>
+                                    {
+                                        result ? (
+                                            <div
+                                                className={'w-full h-full flex flex-col items-center justify-center mt-6'}>
+                                                <img src='/done.svg' className={'h-48 mt-2'} alt={'empty'}/>
+                                                <h1 className={'text-2xl font-bold'}>识别结果</h1>
+                                                <p className={'text-lg mt-2'}>{result}</p>
+                                            </div>
+                                        ) : (
+                                            <div
+                                                className={'w-full h-full flex flex-col items-center justify-center mt-12'}>
+                                                <img src='/empty.svg' className={'h-48 mt-2'} alt={'empty'}/>
+                                                <p>
+                                                    暂无数据，请先上传图片
+                                                </p>
+                                            </div>
+                                        )
+                                    }
+                                </div>
+                            )
+                        }
+                        {
+                            predictStatus === 'fail' && (
+                                <div className={'w-full h-full flex flex-col items-center justify-center mt-12'}>
+                                    <img src='/500.svg' className={'h-48 mt-2'} alt={'empty'}/>
+                                    <div className={'w-full h-full flex flex-col items-center justify-center mt-12'}>
+                                        <p>
+                                            服务器出错，请重试
+                                        </p>
+                                    </div>
+                                </div>
+                            )
+                        } {
+                            predictStatus === 'pending' && (
+                                <div className={'w-full h-full flex flex-col items-center justify-center mt-12'}>
+                                    <img src='/pending.svg' className={'h-48 mt-2'} alt={'empty'}/>
+                                    <div className={'w-full h-full flex flex-col items-center justify-center mt-12'}>
+                                        <p>
+                                            识别中，请稍后
+                                        </p>
+                                    </div>
+                                </div>
+                            )
+                    }
                     </div>
                 )
             case 1:
@@ -44,7 +109,7 @@ export default function Home() {
                         setArticleId(id)
                         setActiveID(3)
                     }
-                } />
+                }/>
             case 3:
                 return <Education id={String(articleId)}/>
             default:

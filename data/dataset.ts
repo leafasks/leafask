@@ -39,7 +39,7 @@ export const datasetData: datasetType[] = [
     {
         id: 8,
         name: "数据集数据2",
-        image: "/dataset/example1.jpg"
+        image: "/dataset/exple1.jpg"
     },
     {
         id: 9,
