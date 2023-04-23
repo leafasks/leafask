@@ -18,8 +18,8 @@ export const datasetData: datasetType[] = [
     },
     {
         id: 4,
-        name: "数据集数据2",
-        image: "/dataset/example1.jpg"
+        name: "树莓叶缘焦枯病",
+        image: "/dataset/dataset4.png"
     },
     {
         id: 5,
