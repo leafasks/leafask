@@ -4,17 +4,17 @@ export const datasetData: datasetType[] = [
     {
         id: 1,
         name: "蓝莓叶缘焦枯病",
-        image: "/education/dataset1.png"
+        image: "/dataset/dataset1.png"
     },
     {
         id: 2,
         name: "树莓叶缘焦枯病",
-        image: "/education/dataset3.png"
+        image: "/dataset/dataset3.png"
     },
     {
         id: 3,
         name: "蓝莓叶缘焦枯病",
-        image: "/education/dataset2.png"
+        image: "/dataset/dataset2.png"
     },
     {
         id: 4,
