@@ -27,7 +27,8 @@ export default function Home() {
             return res.json()
         }).then(res => {
             console.log(res)
-            setResult(res.result)
+            // 将 'blueberry_' 替换为 '蓝莓叶缘焦枯病' ，'rasberry_' 替换为 '树莓叶缘焦枯病'
+            setResult(res.result.replace('blueberry_', '蓝莓叶缘焦枯病').replace('rasberry_', '树莓叶缘焦枯病'))
             setPredictStatus('success')
         }).catch(err => {
             console.log(err)
