@@ -3,18 +3,18 @@ import {datasetType} from "@/types";
 export const datasetData: datasetType[] = [
     {
         id: 1,
-        name: "数据集数据1",
-        image: "/dataset/example1.jpg"
+        name: "蓝莓叶缘焦枯病",
+        image: "/education/dataset1.png"
     },
     {
         id: 2,
-        name: "数据集数据2",
-        image: "/dataset/example1.jpg"
+        name: "树莓叶缘焦枯病",
+        image: "/education/dataset3.png"
     },
     {
         id: 3,
-        name: "数据集数据2",
-        image: "/dataset/example1.jpg"
+        name: "蓝莓叶缘焦枯病",
+        image: "/education/dataset2.png"
     },
     {
         id: 4,
