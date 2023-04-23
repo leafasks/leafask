@@ -21,37 +21,37 @@ export const educationData: educationType[] = [
     },
     {
         id: 4,
-        name: "病害类别及防治方法",
+        name: "叶缘枯焦病",
         description: "教育数据1的描述",
         image: "/education/example1.jpg"
     },
     {
         id: 5,
-        name: "教育数据1",
+        name: "霜霉病",
         description: "教育数据1的描述",
         image: "/education/example1.jpg"
     },
     {
         id: 6,
-        name: "教育数据1",
+        name: "锈病",
         description: "教育数据1的描述",
         image: "/education/education3.png"
     },
     {
         id: 7,
-        name: "教育数据1",
+        name: "褐斑病",
         description: "教育数据1的描述",
         image: "/education/example1.jpg"
     },
     {
         id: 8,
-        name: "病害类别及防治方法",
+        name: "青枯病",
         description: "教育数据1的描述",
         image: "/education/example1.jpg"
     },
     {
         id: 9,
-        name: "病害类别及防治方法",
+        name: "叶斑病",
         description: "教育数据1的描述",
         image: "/education/example1.jpg"
     },
