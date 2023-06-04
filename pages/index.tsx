@@ -121,7 +121,7 @@ export default function Home() {
         <>
             <Head>
                 <title>LeafAsk</title>
-                <meta name="description" content="叶问跨植物病害识别系统"/>
+                <meta name="description" content="叶问植物病害识别系统"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
@@ -135,7 +135,7 @@ export default function Home() {
                             <div className={'h-max fixed flex justify-center items-center'}>
                                 <img src={'/logo.svg'} className={'w-6 mr-3'} alt={'logo'}/>
                                 <div>
-                                    <h1 className={'text-2xl font-bold text-lg text-black'}>叶问跨植物病害识别系统</h1>
+                                    <h1 className={'text-2xl font-bold text-lg text-black'}>叶问植物病害识别系统</h1>
                                 </div>
                             </div>
                         </div>
